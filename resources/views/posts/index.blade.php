@@ -3,19 +3,6 @@
 @section('content')
     <h1>All Posts</h1>
     <a href="{{ route('posts.create') }}" class="btn">+ Add New Post</a>
-
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    @if(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
-
     @if($posts->isEmpty())
         <p>No posts found.</p>
     @else
@@ -35,7 +22,6 @@
                 </div>
             @endforeach
         </div>
-
-        {{ $posts->links() }}
+        {{-- {{ $posts->links() }} --}}
     @endif
 @endsection

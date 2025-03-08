@@ -3,16 +3,6 @@
 @section('content')
     <h1>Edit Post</h1>
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
     <form action="{{ route('posts.update', $post->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -22,12 +12,9 @@
                 type="text" 
                 id="title"
                 name="title" 
-                value="{{ old('title', $post->title) }}"
+                value="{{ $post->title }}"
                 class="@error('title') is-invalid @enderror"
             >
-            @error('title')
-                <div class="error">{{ $message }}</div>
-            @enderror
         </div>
 
         <div>
@@ -36,10 +23,7 @@
                 id="content"
                 name="content"
                 class="@error('content') is-invalid @enderror"
-            >{{ old('content', $post->content) }}</textarea>
-            @error('content')
-                <div class="error">{{ $message }}</div>
-            @enderror
+            >{{  $post->content }}</textarea>
         </div>
 
         <button type="submit">Update</button>
