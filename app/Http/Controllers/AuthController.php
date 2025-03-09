@@ -30,8 +30,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        Auth::login($user); // Auto-login after registration
-
+        Auth::login($user); //
         return redirect()->route('posts.index')->with('success', 'Registration successful');
     }
 
@@ -57,17 +56,9 @@ class AuthController extends Controller
     }
 
     // Handle Logout
-    public function logout(Request $request)
+    public function logout()
     {
         Auth::logout();
-        
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        
-        return redirect()->route('login')
-            ->with('success', 'Logged out successfully')
-            ->header('Cache-Control','nocache, no-store, max-age=0, must-revalidate')
-            ->header('Pragma','no-cache')
-            ->header('Expires','Sun, 02 Jan 1990 00:00:00 GMT');
+        return redirect()->route('login')->with('success', 'Logged out successfully');
     }
 }

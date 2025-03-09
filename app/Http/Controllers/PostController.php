@@ -1,4 +1,4 @@
-<?php 
+<?php
 // Define the namespace for this controller
 namespace App\Http\Controllers;
 // Import required classes
@@ -6,15 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 
 class PostController extends Controller {
-
-    public function __construct() 
-    {
-        // Add auth middleware to all methods
-        $this->middleware(['auth', 'prevent-back-history']);
-    }
-
     public function index() {
-
         $posts = Post::all();  // Execute the query with pagination
 
         return view('posts.index', compact('posts'));

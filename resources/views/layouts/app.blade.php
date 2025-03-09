@@ -14,9 +14,9 @@
 <body>
     <div class="container">
         <div class="flex">
-            {{-- <div>
+            <div>
                 <span> {{ Auth::user()->name }}</span>
-            </div> --}}
+            </div>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit">Logout</button>
